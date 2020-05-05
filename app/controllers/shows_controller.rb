@@ -21,4 +21,12 @@ class ShowsController < ApplicationController
     end
   end
 
+  def schedule_mail
+    shows = Show.find(current_user.faviourite_shows.pluck(:show_id))
+    shows.each do|show|
+      UserMailer.upcoming_show(current_user, show).deliver_now if ((Time.now - Time.parse(show.time_slot.from.time.strftime("%T")))/1.minute).round <= 30
+    end
+    return true
+  end
+
 end

@@ -6,6 +6,9 @@ Rails.application.routes.draw do
     member do
       put :faviourite
     end
+    collection do
+      get :schedule_mail
+    end
   end
   resources :channels
   root to: "homes#index"

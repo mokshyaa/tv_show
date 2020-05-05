@@ -14,3 +14,16 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+//= require jquery
+//= require jquery_ujs
+$(function() {
+    $(document).ready(function() {
+      setInterval(function() {
+        jQuery.ajax({
+          url: "http://localhost:3000/shows/schedule_mail",
+          type: "GET",
+          dataType: "script"
+        });
+      }, 30000); 
+    });
+  });
